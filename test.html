@@ -5,10 +5,10 @@
   // SDK initialization
   window.fbAsyncInit = function() {
     FB.init({
-      appId: '<APP_ID>', // your app ID goes here
+      appId: '3106902062797009', // your app ID goes here
       autoLogAppEvents: true,
       xfbml: true,
-      version: '<GRAPH_API_VERSION>' // Graph API version goes here
+      version: 'v24.0' // Graph API version goes here
     });
   };
 
@@ -42,7 +42,7 @@
   // Launch method and callback registration
   const launchWhatsAppSignup = () => {
     FB.login(fbLoginCallback, {
-      config_id: '<CONFIGURATION_ID>', // your configuration ID goes here
+      config_id: '928031776571939', // your configuration ID goes here
       response_type: 'code',
       override_default_response_type: true,
       extras: {
