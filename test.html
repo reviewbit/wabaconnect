@@ -30,10 +30,10 @@
           console.log("CODE:", response.authResponse.code);
           alert("Success — check console for code");
         } else {
-          console.error("Login failed or cancelled.");
+          console.error("User cancelled or not fully authorized.");
         }
       }, {
-        config_id: "703842435337128",  
+        config_id: "703842435337128",
         response_type: "code",
         scope: "whatsapp_business_management,whatsapp_business_messaging,business_management"
       });
