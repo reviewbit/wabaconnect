@@ -146,50 +146,25 @@
         </div>
     </div>
 
-    <script>
-        window.fbAsyncInit = function() {
-            FB.init({
-              appId      : '3106902062797009', // You need to replace this with your App ID
-              cookie     : true,
-              xfbml      : true,
-              version    : 'v18.0'
-            });
-        };
+        <script>
+function launchSignup() {
+  console.log("Launching Embedded Signup...");
 
-        function launchSignup() {
-            FB.login(
-                function (response) {
-                    if (response.authResponse) {
-                        const code = response.authResponse.code;
-                        console.log("Received code:", code);
+  FB.login(function (response) {
+    console.log("Raw Meta response:", response);
 
-                        // Send to your backend
-                        fetch("/api/interakt/embeded_signup", {
-                            method: "POST",
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({ code }),
-                        }).then(res => {
-                            if (res.ok) {
-                                alert("Connection successful!");
-                            } else {
-                                console.error("Server error", res.status);
-                            }
-                        }).catch(err => {
-                            console.error("Fetch error", err);
-                        });
-                    } else {
-                        console.log("User cancelled login or did not fully authorize.");
-                    }
-                },
-                {
-                    config_id: "703842435337128", // Replace with your Config ID from Meta Events Manager
-                    response_type: "code",
-                    scope: "whatsapp_business_management,whatsapp_business_messaging,business_management",
-                },
-            );
-        }
-    </script>
+    if (response && response.authResponse) {
+      console.log("✅ Authorization code:", response.authResponse.code);
+    } else {
+      console.warn("❌ No authResponse — popup was likely closed or blocked.");
+    }
+  }, {
+    config_id: "703842435337128",
+    response_type: "code",
+    scope: "whatsapp_business_management,whatsapp_business_messaging,business_management",
+    return_scopes: true
+  });
+}
+</script>
 </body>
 </html>
