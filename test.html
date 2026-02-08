@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>WhatsApp Embedded Signup</title>
+
   <script>
     window.fbAsyncInit = function() {
       FB.init({
@@ -26,15 +27,13 @@
         console.log("Meta Response:", response);
 
         if (response.authResponse) {
-          console.log("SUCCESS! Code received:");
-          console.log(response.authResponse.code);
-          alert("Success! Check console for code.");
+          console.log("CODE:", response.authResponse.code);
+          alert("Success — check console for code");
         } else {
-          console.error("User cancelled or login failed.");
-          alert("Login failed or cancelled.");
+          console.error("Login failed or cancelled.");
         }
       }, {
-        config_id: "703842435337128",  // YOUR CONFIG ID
+        config_id: "703842435337128",  
         response_type: "code",
         scope: "whatsapp_business_management,whatsapp_business_messaging,business_management"
       });
@@ -43,7 +42,7 @@
 </head>
 
 <body>
-  <h2>Connect WhatsApp to Flowflex</h2>
+  <h2>Connect WhatsApp</h2>
   <button onclick="connectWhatsApp()">Connect WhatsApp</button>
 </body>
 </html>
